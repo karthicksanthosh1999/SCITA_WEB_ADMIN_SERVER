@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id              String            @id @default(uuid())
+  name            String
+  email           String            @unique
+  password        String
+  role            UserRole          @default(USER)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  HashInformation HashInformation[]
+
+  @@map("users")
+}
+
+model HashInformation {
+  id                   String   @id @default(uuid())
+  productImageUrl      String?
+  productImagePublicId String?
+  productName          String
+  firmwareVersion      String
+  hashValue            String
+  userId               String
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  user                 User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model Contact {
+  id        String   @id @default(uuid())
+  firstName String
+  surName   String
+  email     String
+  mobileNo  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model RequiredInformation {
+  id String @id @default(uuid())
+  firstName String
+  lastName String
+  email String
+  mobileNo String
+  company String
+  country String
+  productFamily String
+  productName String
+  enquireType String
+  request String?
+
+  createdAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
