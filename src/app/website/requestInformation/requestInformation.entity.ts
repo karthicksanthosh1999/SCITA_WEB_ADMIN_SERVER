@@ -12,16 +12,16 @@ export class RequestInformationEntity {
 
     constructor(
         data: {
-        firstName: string,
-        lastName: string,
-        company: string,
-        country: string,
-        email: string,
-        mobileNo: string,
-        productFamily: string,
-        productName: string,
-        enquireType: string,
-        request: string | null,
+            firstName: string,
+            lastName: string,
+            company: string,
+            country: string,
+            email: string,
+            mobileNo: string,
+            productFamily: string,
+            productName: string,
+            enquireType: string,
+            request: string | null,
         }
     ){
         this.firstName = data.firstName

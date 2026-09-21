@@ -10,6 +10,7 @@ import cookieParser from "cookie-parser";
 import hashInformationRouter from "./app/website/hashInformation/hashInformation.router";
 import contactRouter from "./app/website/contact/contact.router";
 import requestInformationRoute from "./app/website/requestInformation/requestInformation.route";
+import jobRouter from "./app/website/jobs/job.router";
 
 export class App {
   public readonly app = express();
@@ -40,6 +41,7 @@ export class App {
     this.app.use("/api/website/hashInformation", hashInformationRouter);
     this.app.use("/api/website/contact", contactRouter);
     this.app.use("/api/website/requestInformation", requestInformationRoute);
+    this.app.use("/api/website/job", jobRouter);
   }
 
   private initializeErrorHandling() {
