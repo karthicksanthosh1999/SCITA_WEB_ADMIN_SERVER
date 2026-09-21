@@ -9,7 +9,7 @@ import authRoute from "./app/auth/auth.route";
 import cookieParser from "cookie-parser";
 import hashInformationRouter from "./app/website/hashInformation/hashInformation.router";
 import contactRouter from "./app/website/contact/contact.router";
-
+import requestInformationRoute from "./app/website/requestInformation/requestInformation.route";
 
 export class App {
   public readonly app = express();
@@ -39,6 +39,7 @@ export class App {
     this.app.use("/api/auth", authRoute);
     this.app.use("/api/website/hashInformation", hashInformationRouter);
     this.app.use("/api/website/contact", contactRouter);
+    this.app.use("/api/website/requestInformation", requestInformationRoute);
   }
 
   private initializeErrorHandling() {

@@ -8,7 +8,7 @@ export class ContactRepository {
         return await prisma.contact.create({ data });
     };
 
-    async findByAll(page: number,limit: number): Promise<{ data: ContactEntity[], total: number}>{
+    async findByAll(page: number, limit: number): Promise<{ data: ContactEntity[], total: number}>{
         const skip = (page -1) * limit;
 
         const [contactData, count] = await Promise.all([
