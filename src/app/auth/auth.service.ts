@@ -29,7 +29,7 @@ export class AuthService{
     async me(id: string):Promise<UserEntity | null> {
         const user = await this.userRepository.findById(id);
         if(!user) throw new ApiError("User Not Found", 400);
-        return user;
+        return new UserEntity(user);
     }
 
 }
