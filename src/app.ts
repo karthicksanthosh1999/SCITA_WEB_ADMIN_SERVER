@@ -14,7 +14,7 @@ import jobRouter from "./app/website/jobs/job.router";
 
 export class App {
   public readonly app = express();
-  
+
   constructor() {
     this.initializeMiddlewares();
     this.initializeRoutes();
@@ -22,7 +22,12 @@ export class App {
   }
 
   private initializeMiddlewares() {
-    this.app.use(cors());
+    this.app.use(cors({
+      origin: "http://192.168.2.48:3000",
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+      credentials: true,
+    }));
     this.app.use(express.json());
     this.app.use(cookieParser());
     this.app.use(loggerMiddleware.handle);

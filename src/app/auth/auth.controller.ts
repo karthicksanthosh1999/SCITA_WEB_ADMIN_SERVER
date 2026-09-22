@@ -34,4 +34,9 @@ export class AuthController{
 
         res.status(200).json( new APIResponse("User Logout Successfully", 200, null));
     };
+
+    me = async(req: Request, res: Response):Promise<void> => {
+        const user = await this.authService.me(req.user?.id!);
+        res.status(200).json( new APIResponse("User Fetch Successfully", 200, user));
+    };
 }

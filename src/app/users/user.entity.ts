@@ -1,7 +1,4 @@
-export enum UserRole {
-  USER = "USER",
-  ADMIN = "ADMIN",
-}
+import { UserRole } from "../../../generated/prisma/enums";
 
 export class UserEntity {
   id: string;

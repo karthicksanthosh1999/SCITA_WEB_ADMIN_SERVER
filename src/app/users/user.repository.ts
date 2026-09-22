@@ -14,12 +14,11 @@ export class UserRepository{
     };
 
     async findByEmail(email: string):Promise<UserEntity | null>{
-        const user = await prisma.user.findUnique({ where: { email } });
-        if (!user) return null;
-        return new UserEntity(user);
+        return await prisma.user.findUnique({ where: { email } });
+        
     };
 
-    async findById(id: string){
+    async findById(id: string):Promise<UserEntity | null>{
         return await prisma.user.findUnique({ where : { id }})
     };
 

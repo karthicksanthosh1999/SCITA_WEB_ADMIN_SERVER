@@ -18,7 +18,6 @@ export class RequestInformationService {
     public async findByAll(page: number, limit: number):Promise<PaginationDto<RequestInformationEntity>> {
         const result = await this.requestInformationRepository.findByAll(page, limit);
         const totalPages = Math.ceil(result.total / limit);
-
         return {
             data: result.data,
             pagination: {

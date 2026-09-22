@@ -15,8 +15,9 @@ export class RequestInformationController{
     };
 
     public findByAll = async(req:Request, res: Response):Promise<void> => {
-        const data = req.body;
-        const result = await this.requestInformationService.findByAll(data?.page, data?.limit);
+        const page = Number(req.query.page);
+        const limit = Number(req.query.limit);    
+        const result = await this.requestInformationService.findByAll(page, limit);
         res.status(200).json( new APIResponse("Request Information Created Successfully", 201, result))
     };
 
